@@ -4,9 +4,9 @@ import lightgbm as lgb
 from sklearn.metrics import accuracy_score
 
 def make_features(df: pd.DataFrame) -> pd.DataFrame:
-    from kairos.features.spread import bid_ask_spread, relative_spread
-    from kairos.features.ofi import order_flow_imbalance
-    from kairos.features.vol import realized_vol
+    from src.kairos.features.spread import bid_ask_spread, relative_spread
+    from src.kairos.features.ofi import order_flow_imbalance
+    from src.kairos.features.vol import realized_vol
 
     feats = pd.DataFrame(index=df.index)
     feats["spread"]       = bid_ask_spread(df)
