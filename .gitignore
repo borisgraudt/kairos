@@ -1,0 +1,25 @@
+# virtual environment
+.venv/
+
+# python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# package build artifacts
+*.egg-info/
+dist/
+build/
+
+# jupyter checkpoints
+.ipynb_checkpoints/
+
+# environment / secrets
+.env
+.env.*
+
+# pyenv
+.python-version
+
+# mac
+.DS_Store
