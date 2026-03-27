@@ -9,4 +9,5 @@ dependencies = [
     "scikit-learn>=1.4",
     "numpy>=1.26",
     "matplotlib>=3.8",
+     "yfinance>=1.2.0",
 ]
