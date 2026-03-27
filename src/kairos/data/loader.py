@@ -1,6 +1,23 @@
 import pandas as pd
 from pathlib import Path
 from .schema import REQUIRED_COLUMNS
+import yfinance as yf
+
+METALS = {
+    "gold":      "GC=F",
+    "copper":    "HG=F",
+    "aluminium": "ALI=F",
+}
+
+def load_futures(ticker: str, period: str = "2y", interval: str = "1h") -> pd.DataFrame:
+    df = yf.download(ticker, period=period, interval=interval, auto_adjust=True)
+    df.columns = df.columns.str.lower()
+    df = df.rename(columns={"open": "open", "high": "high", "low": "low",
+                             "close": "price", "volume": "volume"})
+    df["bid"] = df["low"]   # approximation для hourly data
+    df["ask"] = df["high"]
+    df["side"] = "B"        # placeholder
+    return df.dropna().reset_index()
 
 def load_ticks(path: str | Path) -> pd.DataFrame:
     path = Path(path)
